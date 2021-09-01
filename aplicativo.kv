@@ -1,0 +1,1021 @@
+<Gerenciador>:
+	
+	Apresentacao:
+		name: 'apresentacao'
+	
+	Inicio: 
+		name: 'inicio'
+	
+	Login: 
+		name: 'login'
+	
+	Perfil: 
+		name: 'perfil'
+	
+	Cadastro: 
+		name: 'cadastro'
+		
+	CadastroProjeto: 
+		name: 'cadastro_projeto'
+	
+	TelaSaude: 
+		name: 'saude'
+
+	TelaCultura: 
+		name: 'cultura'
+		
+	TelaNegocios: 
+		name: 'negocios'
+
+	TelaEducacao: 
+		name: 'educacao'
+	
+	TelaProjeto:
+		name: 'projeto'
+
+	TelaUFJF: 
+		name: 'ufjf'
+		
+<Apresentacao>:
+	BoxLayout:
+		canvas:
+			Color: 
+				rgba: .714, .143, .143, 1
+			Rectangle: 
+				size: self.size
+				pos: self.pos
+		Image: 
+			source: 'imagens/logo.png'
+			height: 540
+			width: 540
+			left: -90
+			top: 50
+		
+<Inicio>: 
+	FloatLayout:
+		canvas.before:
+			Color: 
+				rgba:  1, 1, 1, 1
+			Rectangle: 
+				size: self.size
+				pos: self.pos
+			
+			Color: 
+				rgba: .714, .143, .143, 1
+			Rectangle: 
+				size: root.width , 0.063*root.height
+				pos: 0 , 0.937*root.height 
+			
+						
+						
+		BotaoSaude: 
+			size_hint: 0.57, None
+			height: root.height*0.22
+			pos_hint: {'x': 0.03, 'y': 0.67}
+			allow_stretch: True
+			on_release: root.manager.current = 'saude'
+		
+		BotaoCult: 
+			size_hint: 0.32, None
+			height: root.height*0.22
+			pos_hint: {'x': 0.64, 'y': 0.67}
+			allow_stretch: True
+			on_release: root.manager.current = 'cultura'
+
+		BotaoNegocios: 
+			size_hint: 0.32, None
+			height: root.height*0.22
+			pos_hint: {'x': 0.03, 'y': 0.44}
+			allow_stretch: True
+			on_release: root.manager.current = 'negocios'
+		
+		BotaoEdu: 
+			size_hint: 0.57, None
+			height: root.height*0.22
+			pos_hint: {'x': 0.375, 'y': 0.44}
+			allow_stretch: True
+			on_release: root.manager.current = 'educacao'
+
+		BotaoUFJF: 
+			size_hint: 0.94, None
+			height: root.height*0.34
+			pos_hint: {'x': 0.03, 'y': 0.05}
+			allow_stretch: True
+			on_release: root.manager.current = 'ufjf'
+			
+		Label: 
+			text: 'Início'
+			color: 1,1,1,1
+			font_size: '20sp'
+			pos_hint: {'x': -0.3, 'y': 0.47}
+		
+		BotaoMenu: 
+			height: 0.0324*root.height
+			width: 0.065*root.width
+			allow_stretch: True
+			pos: 0.03*root.width , 0.955*root.height
+			on_release: root.manager.current = 'login'
+
+
+
+        
+<Login>:
+	FloatLayout:
+	
+		canvas.before:
+			Color: 
+				rgba:  1, 1, 1, 1
+			Rectangle: 
+				size: self.size
+				pos: self.pos
+		
+			Color: 
+				rgba: .714, .143, .143, 1
+			Rectangle: 
+				size: root.width , 0.063*root.height
+				pos: 0 , 0.937*root.height 
+			
+		Label: 
+			text: 'Login'
+			color: 1,1,1,1
+			font_size: '20sp'
+			pos_hint: {'x': -0.3, 'y': 0.47}
+		
+		BotaoMenu: 
+			height: 0.0324*root.height
+			width: 0.065*root.width
+			allow_stretch: True
+			pos: 0.03*root.width , 0.955*root.height
+			on_release: root.manager.current = 'inicio'
+			
+		TextInput:
+			id: login
+			background_color: 0,0,0,0
+			hint_text: 'login'
+			size_hint: 0.7, None
+			height: root.height*0.05
+			pos_hint: {'x': 0.15, 'y': 0.4}
+			multiline:False
+			font_size: 15
+
+		TextInput:
+			id: password
+			background_color: 0,0,0,0
+			hint_text: 'senha'
+			border: 0,0,0,1
+			size_hint: 0.7, None
+			height: root.height*0.05
+			pos_hint: {'x': 0.15, 'y': 0.325}
+			multiline:False
+			password:True
+			font_size: 15
+			
+		Image: 
+			source: 'imagens/linha.png'
+			size_hint: 0.7, None
+			height: root.height*0.005
+			pos_hint: {'x': 0.15, 'y': 0.4}
+			
+		Image: 
+			source: 'imagens/linha.png'
+			size_hint: 0.7, None
+			height: root.height*0.005
+			pos_hint: {'x': 0.15, 'y': 0.325}
+			
+		Image: 
+			source: 'imagens/balao_instrucoes.png'
+			size_hint: 0.73, None
+			height: root.height*0.34
+			allow_stretch: True
+			pos_hint: {'x': 0.24, 'y': 0.55}
+		
+		BotaoSimples: 
+			text: 'login'
+			size_hint: 0.23, None
+			height: root.height*0.047
+			allow_stretch: True
+			pos_hint: {'x': 0.15, 'y': 0.22}
+			on_release: app.root.get_screen('login').fazer_login(login.text, password.text)
+		
+		BotaoSimples: 
+			text: 'cadastre-se'
+			size_hint: 0.39, None
+			height: root.height*0.047
+			allow_stretch: True
+			pos_hint: {'x': 0.46, 'y': 0.22}
+			on_release: root.manager.current = 'cadastro'
+
+<Cadastro>:
+	FloatLayout:
+	
+		canvas.before:
+			Color: 
+				rgba:  1, 1, 1, 1
+			Rectangle: 
+				size: self.size
+				pos: self.pos
+		
+			Color: 
+				rgba: .714, .143, .143, 1
+			Rectangle: 
+				size: root.width , 0.063*root.height
+				pos: 0 , 0.937*root.height 
+			
+		Label: 
+			text: 'Login'
+			color: 1,1,1,1
+			font_size: '20sp'
+			pos_hint: {'x': -0.3, 'y': 0.47}
+		
+		BotaoMenu: 
+			height: 0.0324*root.height
+			width: 0.065*root.width
+			allow_stretch: True
+			pos: 0.03*root.width , 0.955*root.height
+			on_release: root.manager.current = 'inicio'
+			
+		TextInput:
+			id: nome
+			background_color: 0,0,0,0
+			hint_text: 'nome'
+			size_hint: 0.7, None
+			height: root.height*0.05
+			pos_hint: {'x': 0.15, 'y': 0.4}
+			multiline:False
+			font_size: 15
+
+		Image: 
+			source: 'imagens/linha.png'
+			size_hint: 0.7, None
+			height: root.height*0.005
+			pos_hint: {'x': 0.15, 'y': 0.4}
+
+		TextInput:
+			id: email
+			background_color: 0,0,0,0
+			hint_text: 'e-mail'
+			border: 0,0,0,1
+			size_hint: 0.7, None
+			height: root.height*0.05
+			pos_hint: {'x': 0.15, 'y': 0.35}
+			multiline:False
+			font_size: 15
+				
+		Image: 
+			source: 'imagens/linha.png'
+			size_hint: 0.7, None
+			height: root.height*0.005
+			pos_hint: {'x': 0.15, 'y': 0.35}
+		
+		TextInput:
+			id: matricula
+			background_color: 0,0,0,0
+			hint_text: 'matricula'
+			border: 0,0,0,1
+			size_hint: 0.7, None
+			height: root.height*0.05
+			pos_hint: {'x': 0.15, 'y': 0.3}
+			multiline:False
+			font_size: 15
+			
+			
+		Image: 
+			source: 'imagens/linha.png'
+			size_hint: 0.7, None
+			height: root.height*0.005
+			pos_hint: {'x': 0.15, 'y': 0.3}
+
+		TextInput:
+			id: senha
+			background_color: 0,0,0,0
+			hint_text: 'senha'
+			border: 0,0,0,1
+			size_hint: 0.7, None
+			height: root.height*0.05
+			pos_hint: {'x': 0.15, 'y': 0.25}
+			multiline:False
+			font_size: 15
+						
+		Image: 
+			source: 'imagens/linha.png'
+			size_hint: 0.7, None
+			height: root.height*0.005
+			pos_hint: {'x': 0.15, 'y': 0.25}
+
+		TextInput:
+			id: confirma
+			background_color: 0,0,0,0
+			hint_text: 'confirme a senha'
+			border: 0,0,0,1
+			size_hint: 0.7, None
+			height: root.height*0.05
+			pos_hint: {'x': 0.15, 'y': 0.2}
+			multiline:False
+			font_size: 15
+						
+		Image: 
+			source: 'imagens/linha.png'
+			size_hint: 0.7, None
+			height: root.height*0.005
+			pos_hint: {'x': 0.15, 'y': 0.2}			
+		Image: 
+			source: 'imagens/balao_cadastro.png'
+			size_hint: 0.73, None
+			height: root.height*0.34
+			allow_stretch: True
+			pos_hint: {'x': 0.24, 'y': 0.55}
+		
+		BotaoSimples: 
+			text: 'Finalizar'
+			size_hint: 0.34, None
+			height: root.height*0.047
+			allow_stretch: True
+			pos_hint: {'x': 0.55, 'y': 0.1}
+			on_release: app.root.get_screen('cadastro').fazer_cadastro(nome.text, email.text, matricula.text, senha.text, confirma.text)
+
+
+<Perfil>:
+	FloatLayout:
+		canvas.before:
+			Color: 
+				rgba:  1, 1, 1, 1
+			Rectangle: 
+				size: self.size
+				pos: self.pos
+		
+			Color: 
+				rgba: .714, .143, .143, 1
+			Rectangle: 
+				size: root.width , 0.063*root.height
+				pos: 0 , 0.937*root.height 
+				
+		BoxLayout:
+			size_hint: 0.9, None
+			height: root.height*0.55
+			pos_hint: {'x': 0.05, 'y': 0.15}		
+			ScrollView:
+				BoxLayout:
+					id:box
+					orientation:'vertical'
+					size_hint: 1.0, None
+					height:  self.minimum_height
+
+			
+		Label: 
+			text: 'Perfil'
+			color: 1,1,1,1
+			font_size: '20sp'
+			pos_hint: {'x': -0.3, 'y': 0.47}
+		
+			
+		BotaoMenu: 
+			height: 0.0324*root.height
+			width: 0.065*root.width
+			allow_stretch: True
+			pos: 0.03*root.width , 0.955*root.height
+			on_release: root.manager.current = 'inicio'	
+		
+		Image: 
+			source: 'imagens/simbolo_perfil.png'
+			size_hint: 0.16, None
+			height: root.height*0.084
+			allow_stretch: True
+			pos_hint: {'x': 0.033, 'y': 0.84}		
+			
+		Image: 
+			source: 'imagens/sombra.png'
+			size_hint: 1.0, None
+			allow_stretch: True
+			pos_hint: {'x': 0.0, 'y': 0.78}	
+
+		BotaoSimplesCinza: 
+			text: 'Adicionar Projeto'
+			size_hint: 0.51, None
+			height: root.height*0.06
+			allow_stretch: True
+			pos_hint: {'x': 0.46, 'y': 0.05}
+			on_release: root.manager.current = 'cadastro_projeto'
+		
+<CadastroProjeto>: 
+	FloatLayout:
+	
+		canvas.before:
+			Color: 
+				rgba:  1, 1, 1, 1
+			Rectangle: 
+				size: self.size
+				pos: self.pos
+		
+			Color: 
+				rgba: .714, .143, .143, 1
+			Rectangle: 
+				size: root.width , 0.063*root.height
+				pos: 0 , 0.937*root.height 
+			
+		Label: 
+			text: 'Novo Projeto'
+			color: 1,1,1,1
+			font_size: '20sp'
+			pos_hint: {'x': -0.2, 'y': 0.47}
+		
+			
+		BotaoMenu: 
+			height: 0.0324*root.height
+			width: 0.065*root.width
+			allow_stretch: True
+			pos: 0.03*root.width , 0.955*root.height
+			on_release: root.manager.current = 'inicio'	
+
+		TextInput:
+			id: nome_projeto
+			background_color: 0,0,0,0
+			hint_text: 'nome do projeto'
+			size_hint: 0.92, None
+			height: root.height*0.05
+			pos_hint: {'x': 0.036, 'y': 0.87}
+			multiline:False
+			font_size: 15		
+
+		Image: 
+			source: 'imagens/linha.png'
+			size_hint: 0.92, None
+			height: root.height*0.005
+			pos_hint: {'x': 0.036, 'y': 0.87}
+
+		TextInput:
+			id: resumo
+			background_color: 0,0,0,0
+			hint_text: 'resumo'
+			size_hint: 0.92, None
+			height: root.height*0.05
+			pos_hint: {'x': 0.036, 'y': 0.82}
+			multiline:True
+			font_size: 15		
+
+		Image: 
+			source: 'imagens/linha.png'
+			size_hint: 0.92, None
+			height: root.height*0.005
+			pos_hint: {'x': 0.036, 'y': 0.82}
+
+		TextInput:
+			id: serv_oferecidos
+			background_color: 0,0,0,0
+			hint_text: 'quais serviços são oferecidos'
+			size_hint: 0.92, None
+			height: root.height*0.05
+			pos_hint: {'x': 0.036, 'y': 0.77}
+			multiline:True
+			font_size: 15		
+
+		Image: 
+			source: 'imagens/linha.png'
+			size_hint: 0.92, None
+			height: root.height*0.005
+			pos_hint: {'x': 0.036, 'y': 0.77}
+			
+		TextInput:
+			id: para_quem
+			background_color: 0,0,0,0
+			hint_text: 'quem pode utilizar o serviço'
+			size_hint: 0.92, None
+			height: root.height*0.05
+			pos_hint: {'x': 0.036, 'y': 0.72}
+			multiline:True
+			font_size: 15		
+
+		Image: 
+			source: 'imagens/linha.png'
+			size_hint: 0.92, None
+			height: root.height*0.005
+			pos_hint: {'x': 0.036, 'y': 0.72}
+
+		TextInput:
+			id: como_utilizar
+			background_color: 0,0,0,0
+			hint_text: 'Como utilizar o serviço'
+			size_hint: 0.92, None
+			height: root.height*0.05
+			pos_hint: {'x': 0.036, 'y': 0.67}
+			multiline:True
+			font_size: 15		
+
+		Image: 
+			source: 'imagens/linha.png'
+			size_hint: 0.92, None
+			height: root.height*0.005
+			pos_hint: {'x': 0.036, 'y': 0.67}
+			
+		TextInput:
+			id: telefone
+			background_color: 0,0,0,0
+			hint_text: 'telefone'
+			size_hint: 0.92, None
+			height: root.height*0.05
+			pos_hint: {'x': 0.036, 'y': 0.62}
+			multiline:True
+			font_size: 15		
+
+		Image: 
+			source: 'imagens/linha.png'
+			size_hint: 0.92, None
+			height: root.height*0.005
+			pos_hint: {'x': 0.036, 'y': 0.62}
+
+		TextInput:
+			id: telefone_seg
+			background_color: 0,0,0,0
+			hint_text: 'telefone'
+			size_hint: 0.92, None
+			height: root.height*0.05
+			pos_hint: {'x': 0.036, 'y': 0.57}
+			multiline:True
+			font_size: 15		
+
+		Image: 
+			source: 'imagens/linha.png'
+			size_hint: 0.92, None
+			height: root.height*0.005
+			pos_hint: {'x': 0.036, 'y': 0.57}
+			
+		TextInput:
+			id: email
+			background_color: 0,0,0,0
+			hint_text: 'e-mail'
+			size_hint: 0.92, None
+			height: root.height*0.05
+			pos_hint: {'x': 0.036, 'y': 0.52}
+			multiline:True
+			font_size: 15		
+
+		Image: 
+			source: 'imagens/linha.png'
+			size_hint: 0.92, None
+			height: root.height*0.005
+			pos_hint: {'x': 0.036, 'y': 0.52}
+
+		TextInput:
+			id: site
+			background_color: 0,0,0,0
+			hint_text: 'site'
+			size_hint: 0.92, None
+			height: root.height*0.05
+			pos_hint: {'x': 0.036, 'y': 0.47}
+			multiline:True
+			font_size: 15		
+
+		Image: 
+			source: 'imagens/linha.png'
+			size_hint: 0.92, None
+			height: root.height*0.005
+			pos_hint: {'x': 0.036, 'y': 0.47}
+
+		TextInput:
+			id: local_ufjf
+			background_color: 0,0,0,0
+			hint_text: 'localização na UFJF'
+			size_hint: 0.92, None
+			height: root.height*0.05
+			pos_hint: {'x': 0.036, 'y': 0.42}
+			multiline:True
+			font_size: 15		
+
+		Image: 
+			source: 'imagens/linha.png'
+			size_hint: 0.92, None
+			height: root.height*0.005
+			pos_hint: {'x': 0.036, 'y': 0.42}
+
+		TextInput:
+			id: area_projeto
+			background_color: 0,0,0,0
+			hint_text: 'Área do projeto'
+			size_hint: 0.92, None
+			height: root.height*0.05
+			pos_hint: {'x': 0.036, 'y': 0.37}
+			multiline:True
+			font_size: 15		
+
+		Image: 
+			source: 'imagens/linha.png'
+			size_hint: 0.92, None
+			height: root.height*0.005
+			pos_hint: {'x': 0.036, 'y': 0.37}
+
+		BotaoSimples: 
+			text: 'Finalizar'
+			size_hint: 0.34, None
+			height: root.height*0.05
+			allow_stretch: True
+			pos_hint: {'x': 0.6, 'y': 0.05}
+			on_release: app.root.get_screen('cadastro_projeto').cadastrarProjeto(nome_projeto.text, resumo.text , serv_oferecidos.text , para_quem.text , como_utilizar.text , 				telefone.text , telefone_seg.text , email.text , site.text, local_ufjf.text , area_projeto.text)
+
+
+<TelaSaude>:
+	FloatLayout:
+	
+		canvas.before:
+			Color: 
+				rgba:  1, 1, 1, 1
+			Rectangle: 
+				size: self.size
+				pos: self.pos
+		
+			Color: 
+				rgba: .714, .143, .143, 1
+			Rectangle: 
+				size: root.width , 0.063*root.height
+				pos: 0 , 0.937*root.height 
+
+		BoxLayout:
+			size_hint: 1.0, None
+			height: root.height*0.85
+			pos_hint: {'x': 0.0, 'y': 0.05}		
+			ScrollView:
+				BoxLayout:
+					id:box
+					orientation:'vertical'
+					size_hint: 1.0, None
+					height:  self.minimum_height
+
+			
+		Label: 
+			text: 'Saúde'
+			color: 1,1,1,1
+			font_size: '20sp'
+			pos_hint: {'x': -0.3, 'y': 0.47}
+		
+		BotaoMenu: 
+			height: 0.0324*root.height
+			width: 0.065*root.width
+			allow_stretch: True
+			pos: 0.03*root.width , 0.955*root.height
+			on_release: app.root.get_screen('projeto').remover_labels()
+
+<TelaCultura>:
+	FloatLayout:
+	
+		canvas.before:
+			Color: 
+				rgba:  1, 1, 1, 1
+			Rectangle: 
+				size: self.size
+				pos: self.pos
+		
+			Color: 
+				rgba: .714, .143, .143, 1
+			Rectangle: 
+				size: root.width , 0.063*root.height
+				pos: 0 , 0.937*root.height 
+
+		BoxLayout:
+			size_hint: 1.0, None
+			height: root.height*0.85
+			pos_hint: {'x': 0.0, 'y': 0.05}		
+			ScrollView:
+				BoxLayout:
+					id:box
+					orientation:'vertical'
+					size_hint: 1.0, None
+					height:  self.minimum_height
+			
+		Label: 
+			text: 'Cultura e Lazer'
+			color: 1,1,1,1
+			font_size: '20sp'
+			pos_hint: {'x': -0.15 , 'y': 0.47}
+		
+		BotaoMenu: 
+			height: 0.0324*root.height
+			width: 0.065*root.width
+			allow_stretch: True
+			pos: 0.03*root.width , 0.955*root.height
+			on_release: root.manager.current = 'inicio'
+
+			
+<TelaNegocios>:
+	FloatLayout:
+	
+		canvas.before:
+			Color: 
+				rgba:  1, 1, 1, 1
+			Rectangle: 
+				size: self.size
+				pos: self.pos
+		
+			Color: 
+				rgba: .714, .143, .143, 1
+			Rectangle: 
+				size: root.width , 0.063*root.height
+				pos: 0 , 0.937*root.height 
+				
+		BoxLayout:
+			size_hint: 1.0, None
+			height: root.height*0.85
+			pos_hint: {'x': 0.0, 'y': 0.05}		
+			ScrollView:
+				BoxLayout:
+					id:box
+					orientation:'vertical'
+					size_hint: 1.0, None
+					height:  self.minimum_height
+			
+		Label: 
+			text: 'Negócios e Jurídico'
+			color: 1,1,1,1
+			font_size: '20sp'
+			pos_hint: {'x': -0.1 , 'y': 0.47}
+		
+		BotaoMenu: 
+			height: 0.0324*root.height
+			width: 0.065*root.width
+			allow_stretch: True
+			pos: 0.03*root.width , 0.955*root.height
+			on_release: root.manager.current = 'inicio'	
+
+
+<TelaEducacao>:
+	FloatLayout:
+	
+		canvas.before:
+			Color: 
+				rgba:  1, 1, 1, 1
+			Rectangle: 
+				size: self.size
+				pos: self.pos
+		
+			Color: 
+				rgba: .714, .143, .143, 1
+			Rectangle: 
+				size: root.width , 0.063*root.height
+				pos: 0 , 0.937*root.height 
+				
+		BoxLayout:
+			size_hint: 1.0, None
+			height: root.height*0.85
+			pos_hint: {'x': 0.0, 'y': 0.05}		
+			ScrollView:
+				BoxLayout:
+					id:box
+					orientation:'vertical'
+					size_hint: 1.0, None
+					height:  self.minimum_height
+			
+		Label: 
+			text: 'Educação'
+			color: 1,1,1,1
+			font_size: '20sp'
+			pos_hint: {'x': -0.25, 'y': 0.47}
+		
+		BotaoMenu: 
+			height: 0.0324*root.height
+			width: 0.065*root.width
+			allow_stretch: True
+			pos: 0.03*root.width , 0.955*root.height
+			on_release: root.manager.current = 'inicio'	
+			
+<TelaProjeto>:
+	FloatLayout:
+	
+		canvas.before:
+			Color: 
+				rgba:  1, 1, 1, 1
+			Rectangle: 
+				size: self.size
+				pos: self.pos
+		
+			Color: 
+				rgba: .714, .143, .143, 1
+			Rectangle: 
+				size: root.width , 0.063*root.height
+				pos: 0 , 0.937*root.height 
+				
+		BoxLayout:
+			size_hint: 1.0, None
+			height: root.height*0.85
+			pos_hint: {'x': 0.0, 'y': 0.05}		
+			ScrollView:
+				BoxLayout:
+					id:box
+					orientation:'vertical'
+					size_hint: 1.0, None
+					height:  self.minimum_height
+			
+		Label: 
+			text: 'Projeto'
+			color: 1,1,1,1
+			font_size: '20sp'
+			pos_hint: {'x': -0.25, 'y': 0.47}
+		
+		BotaoMenu: 
+			height: 0.0324*root.height
+			width: 0.065*root.width
+			allow_stretch: True
+			pos: 0.03*root.width , 0.955*root.height
+			on_release: root.manager.current = 'inicio'
+					
+<TelaUFJF>:
+	FloatLayout:
+	
+		canvas.before:
+			Color: 
+				rgba:  1, 1, 1, 1
+			Rectangle: 
+				size: self.size
+				pos: self.pos
+		
+			Color: 
+				rgba: .714, .143, .143, 1
+			Rectangle: 
+				size: root.width , 0.063*root.height
+				pos: 0 , 0.937*root.height 
+			
+		Label: 
+			text: 'UFJF na comunidade'
+			color: 1,1,1,1
+			font_size: '18sp'
+			pos_hint: {'x': -0.11, 'y': 0.47}
+		
+		BotaoMenu: 
+			height: 0.0324*root.height
+			width: 0.065*root.width
+			allow_stretch: True
+			pos: 0.03*root.width , 0.955*root.height
+			on_release: root.manager.current = 'inicio'
+
+
+		Image: 
+			source: 'imagens/foto_ufjf.png'
+			size_hint: 0.96, None
+			height: root.height*0.3
+			allow_stretch: True
+			pos_hint: {'x': 0.02, 'y': 0.04}	
+	
+			
+			
+<BotaoUFJF@ButtonBehavior>:
+	background_color: 0,0,0,0
+	canvas.before:
+		Color: 
+			rgba: .714, .143, .143, 1
+
+		RoundedRectangle: 
+			size: self.width, self.height
+			pos: self.x , self.y
+			radius: [20,]
+			
+	Image: 
+		source: 'imagens/ufjf.png'
+		height: 0.35*root.height
+		width: 0.30*root.width
+		pos: 0.69*root.width , 0.2*root.height 
+
+
+<BotaoSaude@ButtonBehavior>:
+	background_color: 0,0,0,0
+	canvas.before:
+		Color: 
+			rgba: .063, .672, .637, 1
+
+		RoundedRectangle: 
+			size: self.width, self.height
+			pos: self.x , self.y 
+			radius: [20,]
+			
+	Image: 
+		source: 'imagens/saude.png'
+		height: 0.64*root.height
+		width: 0.74*root.width
+		pos: 0.18*root.width , 3.22*root.height 
+
+		
+<BotaoCult@ButtonBehavior>:
+	background_color: 0,0,0,0
+	canvas.before:
+		Color: 
+			rgba: .949, .742, .203, 1
+
+		RoundedRectangle: 
+			size: self.width, self.height
+			pos: self.x , self.y 
+			radius: [20,]
+			
+	Image: 
+		source: 'imagens/cultura.png'
+		height: 0.64*root.height
+		width: 0.74*root.width
+		pos: 2.13*root.width , 3.22*root.height 
+
+<BotaoNegocios@ButtonBehavior>:
+	background_color: 0,0,0,0
+	canvas.before:
+		Color: 
+			rgba: .344, .250, .926, 1
+
+		RoundedRectangle: 
+			size: self.width, self.height
+			pos: self.x , self.y 
+			radius: [20,]
+			
+	Image: 
+		source: 'imagens/negocios.png'
+		height: 0.45*root.height
+		width: 0.77*root.width
+		allow_stretch: True
+		pos: 0.20*root.width , 2.27*root.height 
+			
+<BotaoEdu@ButtonBehavior>:
+	background_color: 0,0,0,0
+	canvas.before:
+		Color: 
+			rgba: .629, .094, .547, 1
+
+		RoundedRectangle: 
+			size: self.width, self.height
+			pos: self.x , self.y 
+			radius: [20,]
+			
+	Image: 
+		source: 'imagens/educacao.png'
+		height: 0.71*root.height
+		width: 0.56*root.width
+		allow_stretch: True
+		pos: 0.87*root.width , 2.15*root.height 
+	
+<BotaoMenu@ButtonBehavior>:
+	background_color: 0,0,0,0
+	Image: 
+		source: 'imagens/menu.png'
+		height: 0.0324*root.height
+		width: 0.065*root.width
+		allow_stretch: True
+		pos: 0.03*root.width , 0.955*root.height
+
+<BotaoSimples@ButtonBehavior+Label>:
+	background_color: 0,0,0,0
+	canvas.before:
+		Color: 
+			rgba: .714, .143, .143, 1
+
+		RoundedRectangle: 
+			size: self.width, self.height
+			pos: self.x , self.y 
+			radius: [15,]	
+
+<BotaoSimplesCinza@ButtonBehavior+Label>:
+	background_color: 0,0,0,0
+	canvas.before:
+		Color: 
+			rgba: .64, .64, .64, 1
+
+		RoundedRectangle: 
+			size: self.width, self.height
+			pos: self.x , self.y 
+			radius: [15,]	
+		
+<BotaoSaudeProjeto@ButtonBehavior+Label> 		
+	background_color: 0,0,0,0
+	canvas.before:
+		Color: 
+			rgba: .063, .672, .637, 1
+		RoundedRectangle: 
+			size: self.width, self.height
+			pos: self.x , self.y 
+			radius: [15,]
+
+<BotaoCultProjeto@ButtonBehavior+Label>:
+	background_color: 0,0,0,0
+	canvas.before:
+		Color: 
+			rgba: .949, .742, .203, 1
+
+		RoundedRectangle: 
+			size: self.width, self.height
+			pos: self.x , self.y 
+			radius: [15,]
+			
+<BotaoNegociosProjeto@ButtonBehavior+Label>:
+	background_color: 0,0,0,0
+	canvas.before:
+		Color: 
+			rgba: .344, .250, .926, 1
+
+		RoundedRectangle: 
+			size: self.width, self.height
+			pos: self.x , self.y 
+			radius: [15,]			
+			
+<BotaoEduProjeto@ButtonBehavior+Label>:
+	background_color: 0,0,0,0
+	canvas.before:
+		Color: 
+			rgba: .629, .094, .547, 1
+
+		RoundedRectangle: 
+			size: self.width, self.height
+			pos: self.x , self.y 
+			radius: [15,]			
+			
+			
+			
+			
